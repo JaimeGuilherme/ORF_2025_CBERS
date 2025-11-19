@@ -17,14 +17,16 @@ A pasta PanSharpening contém scripts para realizar PanSharpening utilizando doi
 ### otb.py
 Script que usa o Orfeo Toolbox (OTB) para PanSharpening.
 
-Métodos suportados:
+Métodos suportados (dependendo da configuração do OTB):
 - Brovey
 - PCA
 - Bayesian
 - RCS
 - HPF
 
-Requer OTB instalado e acessível pelo PATH ou via OSGeo4W.
+O OTB é utilizado via Docker. Imagem recomendada:
+
+docker pull orfeotoolbox/otb
 
 ### rsgis.py
 PanSharpening usando RSGISLib, executado via Docker.
@@ -54,10 +56,9 @@ Métricas implementadas:
 - ERGAS
 
 Recursos adicionais:
-- Reprojeção automática da imagem avaliada para a grade da imagem de referência;
+- Reprojeção da imagem avaliada para a grade da imagem de referência;
 - Suporte a múltiplas bandas;
 - Resampling bilinear;
-- Barra de progresso durante o processamento.
 
 ## Dependências gerais
 
@@ -68,10 +69,11 @@ Python:
 - pillow
 
 Para PanSharpening:
-- Orfeo Toolbox (OTB)
-- Docker + imagem petebunting/rsinfo_rsgislib_build
+- Orfeo Toolbox (OTB) via Docker (orfeotoolbox/otb)
+- RSGISLIB via Docker imagem petebunting/rsinfo_rsgislib_build
 
-Instalação recomendada:
+Instalação recomendada em Python:
+
 pip install numpy rasterio scipy pillow
 
 ## Estrutura do repositório
@@ -88,8 +90,8 @@ README.md
 
 ## Objetivo geral
 
-Este repositório fornece ferramentas completas para:
+Este repositório fornece ferramentas para:
 - Processar imagens multiespectrais e pancromáticas;
-- Executar PanSharpening por diversos métodos;
+- Executar PanSharpening por diferentes métodos;
 - Avaliar quantitativamente a qualidade da fusão;
 - Comparar histogramas e estatísticas entre imagens.
